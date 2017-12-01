@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by zhangZhenhua on 2017/11/30.
@@ -32,6 +33,12 @@ public class HuaService extends Service {
         @Override
         public People getPeople() throws RemoteException {
             return new People("zhangSan",1);
+        }
+
+        @Override
+        public void setName(String name) throws RemoteException {
+           //Toast.makeText(getApplicationContext(),"name is " + name, Toast.LENGTH_LONG);//error
+           Log.i("HuaService","name is " + name);
         }
     }
 }

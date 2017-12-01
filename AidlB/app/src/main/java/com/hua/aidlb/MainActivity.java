@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private IHuaAidlInterface aidlInterface;
     private TextView firstTestBtn;
     private TextView secondTestBtn;
+    private TextView thirdTestBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         firstTestBtn = findViewById(R.id.aidl_b_first_test_btn);
         secondTestBtn = findViewById(R.id.aidl_b_second_test_btn);
+        thirdTestBtn = findViewById(R.id.aidl_b_third_test_btn);
+
 
         firstTestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +50,17 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Toast.makeText(MainActivity.this, "name is " + aidlInterface.getPeople().getName()
                             + ",age is " + aidlInterface.getPeople().getAge(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thirdTestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    aidlInterface.setName("haha");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
